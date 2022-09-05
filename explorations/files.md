@@ -589,3 +589,19 @@ mix phx.new hello
 Fetch and install dependencies? [Yn] * running mix deps.get
 ```
 
+mix/tasks/phx.new.ex
+
+```elixir
+  def run(argv) do
+    elixir_version_check!()
+    case parse_opts(argv) do
+      {_opts, []} ->
+        Mix.Tasks.Help.run(["phx.new"])
+
+      {opts, [base_path | _]} ->
+        generator = if opts[:umbrella], do: Umbrella, else: Single
+        generate(base_path, generator, :project_path, opts)
+    end
+  end
+```
+
