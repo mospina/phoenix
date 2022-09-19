@@ -605,3 +605,40 @@ mix/tasks/phx.new.ex
   end
 ```
 
+lib/phx_new/single.ex
+
+```
+defmodule Phx.New.Single do
+  @moduledoc false
+  use Phx.New.Generator
+  alias Phx.New.{Project}
+```
+
+lib/phx_new/generator.ex
+
+```
+defmodule Phx.New.Generator do
+  @moduledoc false
+  import Mix.Generator
+  alias Phx.New.{Project}
+```
+
+Project is the struct:
+
+```
+defstruct base_path: nil,
+  app: nil,
+  app_mod: nil,
+  app_path: nil,
+  lib_web_name: nil,
+  root_app: nil,
+  root_mod: nil,
+  project_path: nil,
+  web_app: nil,
+  web_namespace: nil,
+  web_path: nil,
+  opts: :unset,
+  in_umbrella?: false,
+  binding: [],
+  generators: []
+```

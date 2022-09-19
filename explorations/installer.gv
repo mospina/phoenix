@@ -1,0 +1,25 @@
+digraph installer {
+
+  subgraph cluster_mix {
+    label="lib/mix/tasks"
+
+    phx_new [label="phx.new.ex"]
+  }
+
+  subgraph cluster_lib {
+    label="lib"
+
+    generator [label="Phx.New.Generator"]
+    project [label="Phx.New.Project"]
+    single [label="Phx.New.Single"]
+    umbrella [label="Phx.New.Umbrella"]
+    ecto [label="Phx.New.Ecto"]
+    mailer [label="Phx.New.Mailer"]
+    web [label="Phx.New.Web"]
+  }
+
+  generator -> single
+  project -> single
+  project -> generator
+  single -> phx_new 
+}
