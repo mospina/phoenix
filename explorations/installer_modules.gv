@@ -1,0 +1,36 @@
+digraph installer {
+
+  graph [
+    label="Phoenix Installer"
+  ]
+
+  node [
+    shape=record
+  ]
+
+  subgraph cluster_mix {
+    label="lib/mix/tasks"
+
+    local_phx [label="{local.phx.ex}"]  
+    phx_new [label="{phx.new.ex||}"]
+    phx_new_ecto [label="{phx.new.ecto.ex}"]  
+    phx_new_web [label="{phx.new.web.ex}"]
+  }
+
+  subgraph cluster_lib {
+    label="lib"
+
+    generator [label="{Phx.New.Generator}"]
+    project [label="{Phx.New.Project"}]
+    single [label="{Phx.New.Single}"]
+    umbrella [label="{Phx.New.Umbrella}"]
+    ecto [label="{Phx.New.Ecto}"]
+    mailer [label="{Phx.New.Mailer}"]
+    web [label="{Phx.New.Web}"]
+  }
+
+  generator -> single
+  project -> single
+  project -> generator
+  single -> phx_new 
+}
