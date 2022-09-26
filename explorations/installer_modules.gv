@@ -11,17 +11,29 @@ digraph installer {
   subgraph cluster_mix {
     label="lib/mix/tasks"
 
-    local_phx [label="{local.phx.ex}"]  
-    phx_new [label="{phx.new.ex||}"]
-    phx_new_ecto [label="{phx.new.ecto.ex}"]  
-    phx_new_web [label="{phx.new.web.ex}"]
+    local_phx [label="{local.phx.ex||run\\1\l}"]  
+    phx_new [label="{phx.new.ex||run\\1\lrun\\3\l}"]
+    phx_new_ecto [label="{phx.new.ecto.ex||run\\1\l}"]  
+    phx_new_web [label="{phx.new.web.ex||run\\1\l}"]
   }
 
   subgraph cluster_lib {
     label="lib"
 
-    generator [label="{Phx.New.Generator}"]
-    project [label="{Phx.New.Project"}]
+    generator [label="{
+      Phx.New.Generator||
+      defmacro __using__\\1\l
+      defmacro __before_compile__\\1\l
+      defmacro template\\2\l
+      copy_from\\3\l
+      config_inject\\3\l
+      prod_only_config_inject\\3\l
+      inject_umbrella_config_defaults\\1\l
+      in_umbrella?\\1\l
+      put_binding\\1\l
+      gen_ecto_config\\1\l
+    }"]
+    project [label="{Phx.New.Project}"]
     single [label="{Phx.New.Single}"]
     umbrella [label="{Phx.New.Umbrella}"]
     ecto [label="{Phx.New.Ecto}"]
@@ -33,4 +45,9 @@ digraph installer {
   project -> single
   project -> generator
   single -> phx_new 
+  generator -> phx_new
+  project -> phx_new
+  umbrella -> phx_new
+  web -> phx_new
+  ecto -> phx_new
 }
