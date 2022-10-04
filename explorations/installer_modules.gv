@@ -33,7 +33,36 @@ digraph installer {
       put_binding\\1\l
       gen_ecto_config\\1\l
     }"]
-    project [label="{Phx.New.Project}"]
+    project [nojustify=false label="{
+      Phx.New.Project|
+      %Project\{\l
+        base_path,\l
+        app,\l
+        app_mod,\l
+        app_path,\l
+        lib_web_name,\l
+        root_app,\l
+        root_mod,\l
+        project_path,\l
+        web_app,\l
+        web_namespace,\l
+        web_path,\l
+        opts,\l
+        in_umbrella?,\l
+        binding,\l
+        generators\l
+      \}\l|
+      new\\2\l
+      ecto?\\1\l
+      html?\\1\l
+      gettext?\\1\l
+      live?\\1\l
+      dashboard?\\1\l
+      assets?\\1\l
+      mailer?\\1\l
+      verbose?\\1\l
+      join_path\\3\l
+    }"]
     single [label="{Phx.New.Single}"]
     umbrella [label="{Phx.New.Umbrella}"]
     ecto [label="{Phx.New.Ecto}"]
