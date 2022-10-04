@@ -63,11 +63,35 @@ digraph installer {
       verbose?\\1\l
       join_path\\3\l
     }"]
-    single [label="{Phx.New.Single}"]
-    umbrella [label="{Phx.New.Umbrella}"]
-    ecto [label="{Phx.New.Ecto}"]
-    mailer [label="{Phx.New.Mailer}"]
-    web [label="{Phx.New.Web}"]
+    single [label="{Phx.New.Single||
+      prepare_project\\1\l
+      generate\\1\l
+      gen_html\\1\l
+      gen_gettext\\1\l
+      gen_ecto\\1\l
+      gen_assets\\1\l
+      gen_mailer\\1\l
+    }"]
+    umbrella [label="{Phx.New.Umbrella||
+      prepare_project\\1\l
+      put_web\\1\l
+      generate\\1\l
+    }"]
+    ecto [label="{Phx.New.Ecto||
+      prepare_project\\1\l
+      generate\\1\l
+    }"]
+    mailer [label="{Phx.New.Mailer||
+      prepare_project\\1\l
+      generate\\1\l
+    }"]
+    web [label="{Phx.New.Web||
+      prepare_project\\1\l
+      generate\\1\l
+    }"]
+
+    // { rank=same project generator }
+    // { rank=single umbrella ecto mailer web }
   }
 
   generator -> single
@@ -79,4 +103,22 @@ digraph installer {
   umbrella -> phx_new
   web -> phx_new
   ecto -> phx_new
+
+  generator -> phx_new_ecto
+
+  generator -> umbrella
+  ecto -> umbrella
+  web -> umbrella
+  project -> umbrella
+  mailer -> umbrella
+
+  generator -> ecto
+  project -> ecto
+
+  generator -> mailer
+  project -> mailer
+
+  generator -> web
+  project -> web
+
 }
