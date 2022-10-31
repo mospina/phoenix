@@ -642,3 +642,28 @@ defstruct base_path: nil,
   binding: [],
   generators: []
 ```
+
+## Tests
+
+```
+$ tree test/
+test/
+├── mix_helper.exs
+├── phx_new_ecto_test.exs
+├── phx_new_test.exs
+├── phx_new_umbrella_test.exs
+├── phx_new_web_test.exs
+└── test_helper.exs
+
+0 directories, 6 files
+```
+
+What is this? In `mix_helper`
+
+```
+# Get Mix output sent to the current
+# process to avoid polluting tests.
+Mix.shell(Mix.Shell.Process)
+```
+
+
