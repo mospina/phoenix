@@ -1,0 +1,30 @@
+digraph PhoenixModules {
+  graph [
+		label="UML Class diagram demo"
+		labelloc="t"
+		fontname="Helvetica,Arial,sans-serif"
+	]
+	node [
+		fontname="Helvetica,Arial,sans-serif"
+		shape=record
+		style=filled
+		fillcolor=gray95
+	]
+
+    channel [label=""]
+    code_reloader [label=""]
+    config [label=""]
+    controller [label=""]
+    digester [label=""]
+    endpoint [label=""]
+    exceptions [label=""]
+    logger [label=""]
+    naming [label=""]
+    param [label=""]
+    presence [label=""]
+    router [label=""]
+    socket [label=""]
+    test [label=""]
+    token [label=""]
+    transports [label=""]
+}
